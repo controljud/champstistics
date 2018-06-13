@@ -7,36 +7,64 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col col-md-12">
-                        <button class="btn btn-light small" data-toggle="collapse" data-target="#new_team">@lang('team.new_team')</button>
+                        <button class="btn btn-light small" data-toggle="collapse" data-target="#new_team">@lang('game.new_game')</button>
                     </div>
                 </div>
                 <div class="collapse" id="new_team">
                     <div class="card">
                         <div class="card-body">
-                            {!! Form::open(['route' => 'team.store', 'id'=>'team-form']) !!}
+                            {!! Form::open(['route' => 'game.store', 'id'=>'game-form']) !!}
+                            <div class="row">
+                                <div class="col col-md-8">
+                                    <div class="row">
+                                        <div class="col col-md-3">
+                                            <label for="team_h">@lang('game.team_h')</label>
+                                            <select id="team_h" name="team_h" class="form-control">
+                                                <option value="">------</option>
+                                                @foreach($teams as $team)
+                                                    <option value="{{$team->id}}">{{$team->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col col-md-2">
+                                            <label for="goals_h">@lang('game.goals')</label>
+                                            <input type="text" id="goals_h" name="goals_h" class="form-control" placeholder="0"/>
+                                        </div>
+                                        <div class="col col-md-1 center" style="padding-top:8px">
+                                            X
+                                        </div>
+                                        <div class="col col-md-2">
+                                            <label for="goals_v">@lang('game.goals')</label>
+                                            <input type="text" id="goals_v" name="goals_v" class="form-control" placeholder="0"/>
+                                        </div>
+                                        <div class="col col-md-3">
+                                            <label for="team_h">@lang('game.team_v')</label>
+                                            <select id="team_v" name="team_v" class="form-control">
+                                                <option value="">------</option>
+                                                @foreach($teams as $team)
+                                                    <option value="{{$team->id}}">{{$team->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                <div class="col col-md-4">
+                                    <label for="date">@lang('game.date')</label>
+                                    <input type="datetime-local" id="date" name="date" class="form-control"/>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col col-md-3">
-                                    <div class="row">
-                                        <div class="col col-md-6 center">
-                                            <label for="team_image">
-                                                <img src="../image/question-shield.png" id="img_team" name="img_team" class="img-responsive img-team-cad" width="240"/>
-                                                <input type="file" id="team_image" name="team_image" style="display:none"/>
-                                            </label>
-                                        </div>
-                                    </div>
+                                    <label for="year">@lang('game.year')</label>
+                                    <input type="number" class="form-control" id="year" name="year" value="{{$year}}"/>
                                 </div>
-                                <div class="col col-md-9">
-                                    <div class="row">
-                                        <div class="col col-md-4">
-                                            <label for="team_name">@lang('team.name')</label>
-                                            <input type="text" class="form-control" placeholder="@lang('team.name')" id="team_name" name="team_name"/>
-                                        </div>
-                                    </div>
+                                <div class="col col-md-3">
+                                    <label for="round">@lang('game.round')</label>
+                                    <input type="number" class="form-control" id="round" name="round" value="{{$round}}"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col col-md-4">
-                                    <button type="submit" class="btn btn-light" id="team-save">@lang('team.save')</button>
+                                    <button type="submit" class="btn btn-light" id="team-save">@lang('game.save')</button>
                                 </div>
                             </div>
                             {!! Form::close() !!}
@@ -54,11 +82,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($teams as $team)
-                        <tr>
-                            <td>{{$team->name}}</td>
-                        </tr>
-                    @endforeach
+
                     </tbody>
                 </table>
             </div>
