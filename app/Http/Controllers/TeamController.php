@@ -21,6 +21,6 @@ class TeamController extends Controller
         $team->image = $image;
         $team->save();
 
-        $this->index();
+        return redirect()->route('team');
     }
 }

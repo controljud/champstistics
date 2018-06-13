@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/team/index', 'TeamController@index')->name('team');
 Route::post('/team/store', 'TeamController@store')->name('team.store');
+
+Route::get('/game/index', 'GameController@index')->name('game');
+Route::post('/game/store', 'GameController@store')->name('game.store');

@@ -8,5 +8,11 @@ use App\model\TeamModel as Team;
 
 class GameController extends Controller
 {
+    public function index(){
 
+    }
+
+    public function store(){
+
+    }
 }
