@@ -109,6 +109,31 @@
             <div class="card">
                 <div class="card-body">
                     <h4>@lang('home.ultimos jogos')</h4>
+                    <div class="row">
+                        <div class="col col-md-3">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="col col-md-6 center">
+                            {{$round}}º rodada
+                        </div>
+                        <div class="col col-md-3 right">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <tbody>
+                            @foreach($games as $game)
+                            <tr>
+                                <td>{{$game->team_h}}</td>
+                                <td>{{$game->goals_h}}</td>
+                                <td>{{$game->goals_v}}</td>
+                                <td class="right">{{$game->team_v}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

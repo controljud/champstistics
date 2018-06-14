@@ -10,8 +10,11 @@ class GameController extends Controller
 {
     public function index(){
         $teams = Team::select('id', 'name')->where('name', '<>', '')->orderBy('name')->get();
-        $games = Game::select('game.id', 't1.name', 'game.goals_h', 'game.goals_v', 't2.name')
+        $round = Game::select('round')->max('round');
+        $games = Game::select('game.id', 't1.name as team_h', 'game.goals_h', 'game.goals_v', 't2.name as team_v')
             ->where('game.id', '<>', null)
+            ->where('game.round', $round)
+            ->where('game.id_championship', 1)
             ->join('team as t1', 't1.id', 'id_team_h')
             ->join('team as t2', 't2.id', 'id_team_v')
             ->orderBy('game.id')->get();
