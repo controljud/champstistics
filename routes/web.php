@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//TODO JWT
+//TODO JWT TO APP
 //serviços
 
 //Rotas autentiticadas

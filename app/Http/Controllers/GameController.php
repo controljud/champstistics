@@ -9,15 +9,11 @@ use App\model\TeamModel as Team;
 class GameController extends Controller
 {
     public function index(){
+        $game = new Game;
         $teams = Team::select('id', 'name')->where('name', '<>', '')->orderBy('name')->get();
-        $round = Game::select('round')->max('round');
-        $games = Game::select('game.id', 't1.name as team_h', 'game.goals_h', 'game.goals_v', 't2.name as team_v')
-            ->where('game.id', '<>', null)
-            ->where('game.round', $round)
-            ->where('game.id_championship', 1)
-            ->join('team as t1', 't1.id', 'id_team_h')
-            ->join('team as t2', 't2.id', 'id_team_v')
-            ->orderBy('game.id')->get();
+        $round = $game->select('round')->max('round');
+        $games = $game->getGames($round, 1);
+
         $year = date('Y');
         $count_game = Game::where('id_championship', 1)->count();
         $round = intval($count_game / 10) + 1;

@@ -47,6 +47,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
                                 <div class="col col-md-4">
                                     <label for="date">@lang('game.date')</label>
                                     <input type="datetime-local" id="date" name="date" class="form-control"/>
@@ -75,18 +76,9 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <table class="table table-hover">
-                    <tbody>
-                    @foreach($games as $game)
-                        <tr>
-                            <td>{{$game->team_h}}</td>
-                            <td>{{$game->goals_h}}</td>
-                            <td>{{$game->goals_v}}</td>
-                            <td class="right">{{$game->team_v}}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                @include('game.games')
+            </div>
+            <div class="col col-md-8">
             </div>
         </div>
     </div>

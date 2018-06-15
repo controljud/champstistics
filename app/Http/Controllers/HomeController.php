@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\model\ChampionshipModel;
 use Illuminate\Http\Request;
 use App\model\GameModel as Game;
 use App\model\TeamModel as Team;
@@ -26,14 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $round = Game::select('round')->max('round');
-        $games = Game::select('game.id', 't1.name as team_h', 'game.goals_h', 'game.goals_v', 't2.name as team_v')
-            ->where('game.id', '<>', null)
-            ->where('game.round', $round)
-            ->where('game.id_championship', 1)
-            ->join('team as t1', 't1.id', 'id_team_h')
-            ->join('team as t2', 't2.id', 'id_team_v')
-            ->orderBy('game.id')->get();
+        $game = new Game;
+        $round = $game->select('round')->max('round');
+        $games = $game->getGames($round, 1);
+
         $count_games = Game::where('id_championship', 1)->count();
         $count_teams = Team::count();
         $count_champ = Championship::count();
@@ -47,5 +44,11 @@ class HomeController extends Controller
         ];
 
         return view('home', $data);
+    }
+
+    public function getRanking($games, $type = 1){
+        if($type == 1){
+
+        }
     }
 }
