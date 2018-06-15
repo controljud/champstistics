@@ -43,6 +43,8 @@ class HomeController extends Controller
             'round' => $round,
         ];
 
+        var_dump($game->getRanking());
+
         return view('home', $data);
     }
 
