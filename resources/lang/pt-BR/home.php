@@ -4,7 +4,7 @@ return [
     'home' => 'Home',
     'campeonato' => 'Campeonato',
     'ranking' => 'Classificação',
-    'ultimos jogos' => 'Últimos jogos',
+    'u_games' => 'Jogos',
 
     'team' => 'Time',
     'games' => 'J',

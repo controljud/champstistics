@@ -84,9 +84,10 @@
                         </div>
                     @endif
                     <h4>@lang('home.ranking')</h4>
-                    <table class="table">
+                    <table class="table tbl_games">
                         <thead>
                         <tr>
+                            <td></td>
                             <td>@lang('home.team')</td>
                             <td>@lang('home.points')</td>
                             <td>@lang('home.games')</td>
@@ -96,10 +97,25 @@
                             <td>@lang('home.goals pro')</td>
                             <td>@lang('home.goals ctr')</td>
                             <td>@lang('home.balance')</td>
+                            <td>%</td>
                         </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($ranking as $key => $team)
+                            <tr>
+                                <td>{{$key + 1}}</td>
+                                <td>{{$team->name}}</td>
+                                <td>{{$team->points}}</td>
+                                <td>{{$team->round}}</td>
+                                <td>{{$team->victory}}</td>
+                                <td>{{$team->draw}}</td>
+                                <td>{{$team->defeat}}</td>
+                                <td>{{$team->goal_p}}</td>
+                                <td>{{$team->goal_d}}</td>
+                                <td>{{$team->goal_p - $team->goal_d}}</td>
+                                <td>{{round(($team->points * 100) / ($team->round * 3), 2)}}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -34,6 +34,11 @@ class HomeController extends Controller
         $count_games = Game::where('id_championship', 1)->count();
         $count_teams = Team::count();
         $count_champ = Championship::count();
+        $rankingObj = $game->getRanking();
+
+        usort($rankingObj, function($a, $b){
+            return ($b->points - $a->points);
+        });
 
         $data = [
             'games' => $games,
@@ -41,16 +46,9 @@ class HomeController extends Controller
             'count_teams' => $count_teams,
             'count_champ' => $count_champ,
             'round' => $round,
+            'ranking' => $rankingObj
         ];
 
-        var_dump($game->getRanking());
-
         return view('home', $data);
-    }
-
-    public function getRanking($games, $type = 1){
-        if($type == 1){
-
-        }
     }
 }

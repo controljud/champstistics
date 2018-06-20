@@ -52,4 +52,15 @@ class GameController extends Controller
 
         return redirect()->route('game');
     }
+
+    public function getGames(Request $request){
+        $round = $request->round;
+        $game = new Game;
+        $rd = $game->select('round')->max('round');
+        if($rd >= $round && $round > 0){
+            $game = $game->getGames($round);
+        }
+
+        return $game;
+    }
 }

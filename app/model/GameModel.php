@@ -35,8 +35,8 @@ class GameModel extends Model
         $teams = [];
         $games = $this->getAllGames();
         foreach($games as $game){
-            $team_h = $game->id_team_h;
-            $team_v = $game->id_team_v;
+            $team_h = $game->team_h;
+            $team_v = $game->team_v;
             $goal_h = $game->goals_h;
             $goal_v = $game->goals_v;
 
@@ -55,24 +55,36 @@ class GameModel extends Model
                 $pt_h = 1; $pt_v = 1;
                 $ep_h = 1; $ep_v = 1;
             }
-            $this->setNewDataTeam($teams, $team_h, $pt_h);
 
-            //$teams[$team_h] = in_array($team_h, $teams) ? $this->setDataTeam($teams, $team_h, $pt_h) : $this->setNewDataTeam($teams, $team_h, $pt_h);
+            $teams[$team_h] = isset($teams[$team_h]) ? $this->setDataTeam($teams, $team_h, $pt_h, $vt_h, $ep_h, $dr_h, $goal_h, $goal_v) : $this->setNewDataTeam($teams, $team_h, $pt_h, $vt_h, $ep_h, $dr_h, $goal_h, $goal_v);
+            $teams[$team_v] = isset($teams[$team_v]) ? $this->setDataTeam($teams, $team_v, $pt_v, $vt_v, $ep_v, $dr_v, $goal_v, $goal_h) : $this->setNewDataTeam($teams, $team_v, $pt_v, $vt_v, $ep_v, $dr_v, $goal_v, $goal_h);
         }
 
         return $teams;
     }
 
-    public function setNewDataTeam($teams, $team, $pt){
-        $teams[$team] = new \stdClass();
+    public function setNewDataTeam($teams, $team, $pt, $vt, $ep, $dr, $goal_p, $goal_d){
+        $teams[$team] = new \stdClass;
         $teams[$team]->points = $pt;
-        var_dump($teams[$team]);
+        $teams[$team]->victory = $vt;
+        $teams[$team]->draw = $ep;
+        $teams[$team]->defeat = $dr;
+        $teams[$team]->round = 1;
+        $teams[$team]->goal_p = $goal_p;
+        $teams[$team]->goal_d = $goal_d;
+        $teams[$team]->name = $team;
 
         return $teams[$team];
     }
 
-    public function setDataTeam($teams, $team, $pt){
+    public function setDataTeam($teams, $team, $pt, $vt, $ep, $dr, $goal_p, $goal_d){
         $teams[$team]->points += $pt;
+        $teams[$team]->victory += $vt;
+        $teams[$team]->draw += $ep;
+        $teams[$team]->defeat += $dr;
+        $teams[$team]->round += 1;
+        $teams[$team]->goal_p += $goal_p;
+        $teams[$team]->goal_d += $goal_d;
 
         return $teams[$team];
     }

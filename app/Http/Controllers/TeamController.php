@@ -8,8 +8,12 @@ use App\model\TeamModel as Team;
 class TeamController extends Controller
 {
     public function index(){
-        $teams = Team::select('name')->where('name', '<>', '')->orderBy('name')->get();
+        $teams = Team::select('id', 'name')->where('id', '<>', null)->orderBy('name')->get();
         return view('team.index', array('teams'=> $teams));
+    }
+
+    public function edit(){
+
     }
 
     public function store(Request $request){

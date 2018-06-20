@@ -47,7 +47,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <td>@lang('team.team')</td>
@@ -55,7 +55,7 @@
                     </thead>
                     <tbody>
                         @foreach($teams as $team)
-                        <tr>
+                        <tr class="tr-team" id="{{$team->id}}">
                             <td>{{$team->name}}</td>
                         </tr>
                         @endforeach

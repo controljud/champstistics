@@ -24,3 +24,4 @@ Route::post('/team/store', 'TeamController@store')->name('team.store');
 
 Route::get('/game/index', 'GameController@index')->name('game');
 Route::post('/game/store', 'GameController@store')->name('game.store');
+Route::post('/game/games', 'GameController@getGames')->name('game.games');
