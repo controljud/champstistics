@@ -46,7 +46,7 @@ class HomeController extends Controller
             'count_teams' => $count_teams,
             'count_champ' => $count_champ,
             'round' => $round,
-            'ranking' => $rankingObj
+            'ranking' => $rankingObj,
         ];
 
         return view('home', $data);

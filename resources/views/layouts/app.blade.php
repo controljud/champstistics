@@ -30,25 +30,31 @@
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
                         <a class="nav-link" href="{{route('home')}}">
-                            <i class="fa fa-fw fa-dashboard"></i>
+                            <i class="fa fa-fw fa-home"></i>
                             <span class="nav-link-text">Home</span>
                         </a>
                     </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="{{route('team')}}">
-                            <i class="fa fa-fw fa-area-chart"></i>
+                            <i class="fa fa-fw fa-futbol-o"></i>
                             <span class="nav-link-text">Times</span>
                         </a>
                     </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                         <a class="nav-link" href="{{route('game')}}">
-                            <i class="fa fa-fw fa-table"></i>
+                            <i class="fa fa-fw fa-tv"></i>
                             <span class="nav-link-text">Jogos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                        <a class="nav-link" href="{{route('statistics')}}">
+                            <i class="fa fa-fw fa-area-chart"></i>
+                            <span class="nav-link-text">Estatísticas</span>
                         </a>
                     </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                            <i class="fa fa-fw fa-wrench"></i>
+                            <i class="fa fa-fw fa-trophy"></i>
                             <span class="nav-link-text">Campeonatos</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseComponents">
