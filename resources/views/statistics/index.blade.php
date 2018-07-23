@@ -10,7 +10,7 @@
                     @foreach($graph as $ranking)
                         @foreach($ranking as $team)
                             <tr>
-                                <td>{{var_dump($ranking)}}</td>
+                                <td>{{var_dump($team)}}</td>
                             </tr>
                         @endforeach
                     @endforeach
